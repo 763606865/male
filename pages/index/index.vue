@@ -3,16 +3,17 @@
 		<!-- 头部轮播 -->
 		<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 			<swiper-item v-for="(item,index) in banners" :key="index">
-				<view class="swiper-item uni-bg-red">
-					<img :src="item.path" alt="">
+				<view class="swiper-item uni-bg">
+					<a :href="item.link"><img :src="item.path" alt=""></a>
 				</view>
 			</swiper-item>
 		</swiper>
-	</view>
+		<tabBars></tabBars>
+		</view>
 </template>
 
 <script>
-	import swiper from './swiper.vue'
+	import tabBars from './components/tabBars.vue'
 	export default {
 		data() {
 			return {
@@ -36,8 +37,8 @@
 		methods: {
 			
 		},
-		components: {
-			swiper,
+		components:{
+			tabBars,
 		}
 	}
 </script>
@@ -101,5 +102,9 @@
 	.uni-padding-wrap {
 	    width:550rpx;
 	    padding:0 100rpx;
+	}
+	.uni-bg img{
+		width:100%;
+		height:100%;
 	}
 </style>
