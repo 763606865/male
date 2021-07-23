@@ -1,14 +1,15 @@
 <template>
 	<view class="content">
 		<!-- 头部轮播 -->
-		<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+		<swiper class="banner-box" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 			<swiper-item v-for="(item,index) in banners" :key="index">
-				<view class="swiper-item uni-bg">
+				<view class="banner-item">
 					<a :href="item.link"><img :src="item.path" alt=""></a>
 				</view>
 			</swiper-item>
 		</swiper>
-		<tabBars></tabBars>
+		
+		<tabBars :stores="stores"></tabBars>
 		</view>
 </template>
 
@@ -19,10 +20,11 @@
 			return {
 				title:'首页',
 				banners: [],
-				indicatorDots: true,
+				indicatorDots: false,
 				autoplay: true,
 				interval: 4000,
-				duration: 500
+				duration: 500,
+				stores:[],
 			}
 		},
 		onLoad() {
@@ -33,9 +35,25 @@
 			        this.banners = res.data.data.banners;
 			    }
 			});
+			uni.request({
+			    url: 'http://www.oldbaby.com/api/stores',
+				method: 'post',
+			    success: (res) => {
+			        let data = res.data.data.stores.data;
+					for(var i=0; i<data.length; i++)
+					{
+						data[i].mark = this.cdn(data[i].mark);
+					}
+					this.stores = data;
+			    },
+			});
 		},
 		methods: {
-			
+			change(item) {
+				uni.navigateTo({
+					url: item.url,
+				});
+			},
 		},
 		components:{
 			tabBars,
@@ -43,68 +61,28 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
-	.uni-margin-wrap {
-		width:690rpx;
-		width: 100%;;
-	}
-	.swiper {
-		width:100%;
-		height: 300rpx;
-	}
-	.swiper-item {
-		display: block;
-		height: 300rpx;
-		line-height: 300rpx;
-		text-align: center;
-	}
-	
-	.swiper-list {
-		margin-top: 40rpx;
-		margin-bottom: 0;
-	}
-	
-	.uni-common-mt{
-		margin-top:60rpx;
-		position:relative;
-	}
-	
-	.info {
-		position: absolute;
-		right:20rpx;
-	}
-	
-	.uni-padding-wrap {
-	    width:550rpx;
-	    padding:0 100rpx;
-	}
-	.uni-bg img{
-		width:100%;
-		height:100%;
+		
+		.banner-box {
+			width:100%;
+			height: 300rpx;
+			
+			.banner-item {
+				display: flex;
+				height: 300rpx;
+				line-height: 300rpx;
+				text-align: center;
+				
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
 	}
 </style>

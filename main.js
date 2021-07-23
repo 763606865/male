@@ -4,8 +4,6 @@ import App from './App'
 
 import Json from './Json'
 
-Vue.config.productionTip = false
-
 App.mpType = 'app'
 
 const msg = (title, duration=1500, mask=false, icon='none')=>{
@@ -43,6 +41,10 @@ Vue.config.productionTip = false;
 Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, json, prePage};
+Vue.prototype.cdn = function (url) {
+	let api = 'http://oldbaby.oss-cn-beijing.aliyuncs.com/';
+	return api + url;
+};
 
 App.myType = 'app';
 
