@@ -1,6 +1,6 @@
 <template>	
 	<view class="box">
-		<view class="box-item" v-for="(item,index) in stores" :key="item.id">
+		<view class="box-item" v-for="(item,index) in stores" :key="item.id" @tap="redirectDetail(item.id)">
 			<!-- TODO 在支付宝小程序下 需要用 style 覆盖标签的默认样式 -->
 			<view class="box-image">
 				<image :src="item.mark" mode="aspectFit"></image>
@@ -34,7 +34,12 @@
 			
 		},
 		methods: {
-			
+			redirectDetail:function(store_id)
+			{
+				uni.navigateTo({
+				    url: '/pages/store/detail?store_id='+store_id
+				});
+			}
 		},
 		props: {
 			stores:{
