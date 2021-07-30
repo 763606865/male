@@ -83,12 +83,11 @@
 			width: 100%;
 			.banner-box {
 				width:100%;
-				height: 300rpx;
+				height: 500rpx;
 				
 				.banner-item {
 					display: flex;
-					height: 300rpx;
-					line-height: 300rpx;
+					height: 100%;
 					text-align: center;
 					
 					img {
