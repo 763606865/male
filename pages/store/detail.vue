@@ -13,8 +13,12 @@
 				<text style="font-size: 24rpx;text-decoration: line-through;">¥{{info.origin_price}}</text>
 			</view>
 			<view class="detail-sale">
-				<text>已售:{{info.sales}}</text>
+				<text space="ensp">已售: {{info.sales}}</text>
+				<text space="ensp"><uni-icons type="eye" size="10" space="ensp"></uni-icons>浏览: {{info.views}}</text>
 			</view>
+		</view>
+		<view class="detail-box">
+			
 		</view>
 	</view>
 </template>
@@ -56,7 +60,8 @@
 
 <style lang="scss">
 	.albums {
-		image { 
+		height:500rpx;
+		image {
 			width:100%;
 		}
 	}
@@ -79,10 +84,18 @@
 		}
 		.detail-sale {
 			width: 30%;
+			height: 100;
 			text-align: center;
 			font-size: 24rpx;
-			line-height: 100rpx;
+			line-height: 50rpx;
 			background: #fbdae1;
+			flex-direction: column;
+			display: flex;
 		}
+	}
+
+	.detail-box {
+		padding:10rpx;
+		background-color: #eef2ff;
 	}
 </style>

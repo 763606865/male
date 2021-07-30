@@ -1,13 +1,16 @@
 <template>
 	<view class="content">
 		<!-- 头部轮播 -->
-		<swiper class="banner-box" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-			<swiper-item v-for="(item,index) in banners" :key="index">
-				<view class="banner-item">
-					<a :href="item.link"><img :src="item.path" alt=""></a>
-				</view>
-			</swiper-item>
-		</swiper>
+		<uni-swiper-dot class="uni-swiper" :info="banners" :current="current" field="content" :mode="mode">
+		    <swiper class="banner-box" :autoplay="autoplay" :interval="interval" :duration="duration" circular @change="swiperChange">
+		    	<swiper-item v-for="(item,index) in banners" :key="index">
+		    		<view class="banner-item">
+		    			<a :href="item.link"><img :src="item.path" alt=""></a>
+		    		</view>
+		    	</swiper-item>
+		    </swiper>
+		</uni-swiper-dot>
+		
 		
 		<tabBars :stores="stores"></tabBars>
 		</view>
@@ -15,6 +18,8 @@
 
 <script>
 	import tabBars from './components/tabBars.vue'
+	import {uniSwiperDot}  from '@dcloudio/uni-ui'
+	
 	export default {
 		data() {
 			return {
@@ -25,6 +30,8 @@
 				interval: 4000,
 				duration: 500,
 				stores:[],
+				mode: 'round',
+				current: 0,
 			}
 		},
 		onLoad() {
@@ -54,9 +61,13 @@
 					url: item.url,
 				});
 			},
+			swiperChange(e) {
+				this.current = e.detail.current;
+			}
 		},
 		components:{
 			tabBars,
+			uniSwiperDot,
 		}
 	}
 </script>
@@ -68,19 +79,22 @@
 		align-items: center;
 		justify-content: center;
 		
-		.banner-box {
-			width:100%;
-			height: 300rpx;
-			
-			.banner-item {
-				display: flex;
+		.uni-swiper {
+			width: 100%;
+			.banner-box {
+				width:100%;
 				height: 300rpx;
-				line-height: 300rpx;
-				text-align: center;
 				
-				img {
-					width: 100%;
-					height: 100%;
+				.banner-item {
+					display: flex;
+					height: 300rpx;
+					line-height: 300rpx;
+					text-align: center;
+					
+					img {
+						width: 100%;
+						height: 100%;
+					}
 				}
 			}
 		}

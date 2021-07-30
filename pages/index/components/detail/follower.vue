@@ -9,8 +9,8 @@
 				<text style="flex-wrap: wrap;">{{item.title}}</text>
 			</view>
 			<view class="box-sale" style="display: flex; flex-direction: row; justify-content: space-between;">
-				<text style="color: #DD524D; font-size: 30rpx;margin-right: 10rpx;">{{item.price}}</text>
-				<text style="color: #b9c0bb; font-size: 24rpx;text-decoration: line-through; margin-right: 40rpx;">{{item.origin_price}}</text>
+				<text style="color: #DD524D; font-size: 30rpx; margin-right: 10rpx;">{{item.price}}</text>
+				<text style="color: #b9c0bb; font-size: 24rpx; text-decoration: line-through; margin-right: 40rpx;">{{item.origin_price}}</text>
 				<text style="color: #b9c0bb; font-size: 20rpx;">已售{{item.sales}}</text>
 			</view>
 			<view class="box-tags">
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+	import {uniLoadMore}  from '@dcloudio/uni-ui'
 	export default {
 		data() {
 			return {
@@ -45,6 +46,9 @@
 			stores:{
 				
 			}
+		},
+		components:{
+			uniLoadMore,
 		}
 	}
 </script>
