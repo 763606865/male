@@ -1,52 +1,87 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+		<!-- 头部轮播 -->
+		<uni-swiper-dot class="uni-swiper" :info="banners" :current="current" field="content" :mode="mode">
+		    <swiper class="banner-box" :autoplay="autoplay" :interval="interval" :duration="duration" circular @change="swiperChange">
+		    	<swiper-item v-for="(item,index) in banners" :key="index">
+		    		<view class="banner-item">
+		    			<a :href="item.link"><img :src="item.path" alt=""></a>
+		    		</view>
+		    	</swiper-item>
+		    </swiper>
+		</uni-swiper-dot>
+		
+		<tabBars></tabBars>
 		</view>
-	</view>
 </template>
 
 <script>
+	import tabBars from './components/tabBars.vue'
+	import {uniSwiperDot}  from '@dcloudio/uni-ui'
+	
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title:'首页',
+				banners: [],
+				indicatorDots: false,
+				autoplay: true,
+				interval: 4000,
+				duration: 500,
+				mode: 'round',
+				current: 0,
 			}
 		},
 		onLoad() {
-
+			uni.request({
+			    url: 'http://www.oldbaby.com/api',
+				method: 'post',
+			    success: (res) => {
+			        this.banners = res.data.data.banners;
+			    }
+			});
 		},
 		methods: {
-
+			change(item) {
+				uni.navigateTo({
+					url: item.url,
+				});
+			},
+			swiperChange(e) {
+				this.current = e.detail.current;
+			}
+		},
+		components:{
+			tabBars,
+			uniSwiperDot,
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+		
+		.uni-swiper {
+			width: 100%;
+			.banner-box {
+				width:100%;
+				height: 500rpx;
+				
+				.banner-item {
+					display: flex;
+					height: 100%;
+					text-align: center;
+					
+					img {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
 	}
 </style>

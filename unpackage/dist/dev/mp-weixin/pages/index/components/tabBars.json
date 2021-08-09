@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "follower": "/pages/index/components/detail/follower",
+    "recommend": "/pages/index/components/detail/recommend"
+  }
+}

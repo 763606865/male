@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "首页",
+  "enablePullupToRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "tab-bars": "/pages/index/components/tabBars",
+    "uni-swiper-dot": "/node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot"
+  }
+}
