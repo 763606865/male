@@ -6,9 +6,9 @@
 			</view>
 		</scroll-view>
 		
-		<swiper class="tab-content" :style="swiper_height" :current="tabIndex" style="flex: 1;" :duration="300" @change="ontabchange">
+		<swiper class="tab-content" :style="swiper_height" :current="tabIndex" :duration="300" @change="ontabchange">
 			<swiper-item>
-				<follower :stores="stores"></follower>
+				<follower></follower>
 			</swiper-item>
 			<swiper-item >
 				<recommend></recommend>
@@ -40,11 +40,11 @@
 				showTips: false,
 				navigateFlag: false,
 				pulling: false,
-				swiper_height: "height:900rpx;",
+				swiper_height: "height:820rpx",
 			}
 		},
 		onLoad() {
-			
+			alert(111);
 		},
 		methods: {
 			loadMore(e) {
@@ -121,9 +121,6 @@
 		},
 		components:{
 			follower,recommend
-		},
-		props: {
-			stores:{}
 		}
 	}
 </script>

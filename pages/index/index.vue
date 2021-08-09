@@ -11,8 +11,7 @@
 		    </swiper>
 		</uni-swiper-dot>
 		
-		
-		<tabBars :stores="stores"></tabBars>
+		<tabBars></tabBars>
 		</view>
 </template>
 
@@ -29,7 +28,6 @@
 				autoplay: true,
 				interval: 4000,
 				duration: 500,
-				stores:[],
 				mode: 'round',
 				current: 0,
 			}
@@ -41,18 +39,6 @@
 			    success: (res) => {
 			        this.banners = res.data.data.banners;
 			    }
-			});
-			uni.request({
-			    url: 'http://www.oldbaby.com/api/stores',
-				method: 'post',
-			    success: (res) => {
-			        let data = res.data.data.stores.data;
-					for(var i=0; i<data.length; i++)
-					{
-						data[i].mark = this.cdn(data[i].mark);
-					}
-					this.stores = data;
-			    },
 			});
 		},
 		methods: {

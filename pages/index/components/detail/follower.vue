@@ -27,9 +27,12 @@
 	export default {
 		data() {
 			return {
+				stores:{},
+				page:1,
 			};
 		},
 		onLoad() {
+			this.getStore(this.page);
 		},
 		computed: {
 			
@@ -40,15 +43,36 @@
 				uni.navigateTo({
 				    url: '/pages/store/detail?store_id='+store_id
 				});
-			}
-		},
-		props: {
-			stores:{
-				
+			},
+			getStore(page) {
+				uni.request({
+				    url: 'http://www.oldbaby.com/api/stores',
+					method: 'post',
+					data: {
+						page:page
+					},
+				    success: (res) => {
+				        let data = res.data.data.stores.data;
+						if(data.length)
+						{
+							for(var i=0; i<data.length; i++)
+							{
+								data[i].mark = this.cdn(data[i].mark);
+								this.stores.push(data[i]);
+							}
+							this.page = res.data.data.stores.current_page;
+						}
+				    },
+				});
 			}
 		},
 		components:{
 			uniLoadMore,
+		},
+		onReachBottom: function(e) {
+			let page = this.page;
+			page++;
+			this.getStore(page);
 		}
 	}
 </script>
@@ -56,14 +80,18 @@
 	.box {
 		display: flex;
 		flex-direction: row;
-		padding:10rpx;
+		flex-wrap:wrap;
+		box-sizing: border-box;
+		padding: 10rpx;
 		
 		.box-item {
 			flex-flow: column;
 			padding: 10rpx;
 			background: white;
 			border-radius: 10rpx;
-			width:50%;
+			box-sizing: border-box;
+			margin-bottom: 10rpx;
+			width:49%;
 			
 			.box-image {
 				width:100%;
@@ -98,7 +126,7 @@
 			}
 		}
 		
-		.box-item:nth-child(1) {
+		.box-item:nth-child(2n+1) {
 			margin-right: 10rpx;
 		}
 	}

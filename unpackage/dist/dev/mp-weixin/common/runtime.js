@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more":1,"node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot":1,"pages/index/components/tabBars":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1,"pages/index/components/detail/follower":1};
+/******/ 		var cssChunks = {"node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot":1,"pages/index/components/tabBars":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1,"pages/index/components/detail/follower":1,"node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more":"node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more","node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot":"node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot","pages/index/components/tabBars":"pages/index/components/tabBars","uni_modules/uni-icons/components/uni-icons/uni-icons":"uni_modules/uni-icons/components/uni-icons/uni-icons","pages/index/components/detail/follower":"pages/index/components/detail/follower","pages/index/components/detail/recommend":"pages/index/components/detail/recommend"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot":"node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot","pages/index/components/tabBars":"pages/index/components/tabBars","uni_modules/uni-icons/components/uni-icons/uni-icons":"uni_modules/uni-icons/components/uni-icons/uni-icons","pages/index/components/detail/follower":"pages/index/components/detail/follower","pages/index/components/detail/recommend":"pages/index/components/detail/recommend","node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more":"node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

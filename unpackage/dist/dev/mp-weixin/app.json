@@ -18,11 +18,14 @@
       {
         "text": "首页",
         "pagePath": "pages/index/index",
-        "iconPath": "uni-icons"
+        "iconPath": "static/tabbar/home-tabbar.png",
+        "selectedIconPath": "static/tabbar/home-activity-tabbar.png"
       },
       {
         "text": "我的",
-        "pagePath": "pages/self/self"
+        "pagePath": "pages/self/self",
+        "iconPath": "static/tabbar/self-tabbar.png",
+        "selectedIconPath": "static/tabbar/self-activity-tabbar.png"
       }
     ]
   },

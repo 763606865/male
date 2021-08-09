@@ -136,8 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _uniLoadMore = function _uniLoadMore() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more */ "node-modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-load-more/uni-load-more */ 34));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _uniSwiperDot = function _uniSwiperDot() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot */ "node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot */ 41));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var tabBars = function tabBars() {__webpack_require__.e(/*! require.ensure | pages/index/components/tabBars */ "pages/index/components/tabBars").then((function () {return resolve(__webpack_require__(/*! ./components/tabBars.vue */ 48));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _uniSwiperDot = function _uniSwiperDot() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot */ "node-modules/@dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-swiper-dot/uni-swiper-dot */ 34));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var tabBars = function tabBars() {__webpack_require__.e(/*! require.ensure | pages/index/components/tabBars */ "pages/index/components/tabBars").then((function () {return resolve(__webpack_require__(/*! ./components/tabBars.vue */ 41));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -167,7 +166,6 @@ __webpack_require__.r(__webpack_exports__);
       autoplay: true,
       interval: 4000,
       duration: 500,
-      stores: [],
       mode: 'round',
       current: 0 };
 
@@ -178,18 +176,6 @@ __webpack_require__.r(__webpack_exports__);
       method: 'post',
       success: function success(res) {
         _this.banners = res.data.data.banners;
-      } });
-
-    uni.request({
-      url: 'http://www.oldbaby.com/api/stores',
-      method: 'post',
-      success: function success(res) {
-        var data = res.data.data.stores.data;
-        for (var i = 0; i < data.length; i++)
-        {
-          data[i].mark = _this.cdn(data[i].mark);
-        }
-        _this.stores = data;
       } });
 
   },
@@ -205,8 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 
   components: {
     tabBars: tabBars,
-    uniSwiperDot: _uniSwiperDot,
-    uniLoadMore: _uniLoadMore } };exports.default = _default;
+    uniSwiperDot: _uniSwiperDot } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
