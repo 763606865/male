@@ -5,7 +5,7 @@
 		    <swiper class="banner-box" :autoplay="autoplay" :interval="interval" :duration="duration" circular @change="swiperChange">
 		    	<swiper-item v-for="(item,index) in banners" :key="index">
 		    		<view class="banner-item">
-		    			<a :href="item.link"><img :src="item.path" alt=""></a>
+		    			<a :href="item.link"><img :src="cdn(item.path)" alt=""></a>
 		    		</view>
 		    	</swiper-item>
 		    </swiper>

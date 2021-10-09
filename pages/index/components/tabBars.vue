@@ -43,9 +43,6 @@
 				swiper_height: "height:820rpx",
 			}
 		},
-		onLoad() {
-			alert(111);
-		},
 		methods: {
 			loadMore(e) {
 			    setTimeout(() => {

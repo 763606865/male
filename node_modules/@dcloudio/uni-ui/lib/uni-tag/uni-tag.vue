@@ -26,6 +26,7 @@
 
 	export default {
 		name: "UniTag",
+		emits:['click'],
 		props: {
 			type: {
 				// 标签类型default、primary、success、warning、error、royal
@@ -77,7 +78,7 @@
 					isTrue(circle) ? 'uni-tag--circle' : '',
 					isTrue(mark) ? 'uni-tag--mark' : '',
 					'uni-tag--' + size,
-					type === 'default' ? 'uni-tag--default' : 'uni-tag-text',
+					// type === 'default' ? 'uni-tag--default' : 'uni-tag-text',
 					isTrue(inverted) ? 'uni-tag-text--' + type : '',
 					size === 'small' ? 'uni-tag-text--small' : ''
 				]
@@ -100,7 +101,7 @@
 	$tag-pd: 0px 16px;
 	$tag-small-pd: 0px 8px;
 	$uni-color-royal: #4335d6;
-	
+
 
 	.uni-tag {
 		/* #ifndef APP-NVUE */

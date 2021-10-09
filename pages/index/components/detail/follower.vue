@@ -3,7 +3,7 @@
 		<view class="box-item" v-for="(item,index) in stores" :key="item.id" @tap="redirectDetail(item.id)">
 			<!-- TODO 在支付宝小程序下 需要用 style 覆盖标签的默认样式 -->
 			<view class="box-image">
-				<image :src="item.mark" mode="aspectFit"></image>
+				<image :src="cdn(item.mark)" mode="aspectFit"></image>
 			</view>
 			<view class="box-title">
 				<text style="flex-wrap: wrap;">{{item.title}}</text>
@@ -27,11 +27,11 @@
 	export default {
 		data() {
 			return {
-				stores:{},
 				page:1,
+				stores:[],
 			};
 		},
-		onLoad() {
+		created() {
 			this.getStore(this.page);
 		},
 		computed: {
@@ -57,7 +57,6 @@
 						{
 							for(var i=0; i<data.length; i++)
 							{
-								data[i].mark = this.cdn(data[i].mark);
 								this.stores.push(data[i]);
 							}
 							this.page = res.data.data.stores.current_page;
